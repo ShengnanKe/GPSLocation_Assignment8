@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44C42F2A2C18337400754E3C /* RestaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C42F292C18337400754E3C /* RestaurantMapViewController.swift */; };
+		44C42F2C2C18954900754E3C /* RestaurantInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C42F2B2C18954900754E3C /* RestaurantInfo.swift */; };
 		44F3CA2D2C163BA3002C8BDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3CA2C2C163BA3002C8BDD /* AppDelegate.swift */; };
 		44F3CA2F2C163BA3002C8BDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3CA2E2C163BA3002C8BDD /* SceneDelegate.swift */; };
-		44F3CA312C163BA3002C8BDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3CA302C163BA3002C8BDD /* ViewController.swift */; };
 		44F3CA342C163BA3002C8BDD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 44F3CA332C163BA3002C8BDD /* Base */; };
 		44F3CA372C163BA3002C8BDD /* GPSLocation_Assignment8.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44F3CA352C163BA3002C8BDD /* GPSLocation_Assignment8.xcdatamodeld */; };
 		44F3CA392C163BA6002C8BDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F3CA382C163BA6002C8BDD /* Assets.xcassets */; };
@@ -21,10 +22,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44C42F292C18337400754E3C /* RestaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapViewController.swift; sourceTree = "<group>"; };
+		44C42F2B2C18954900754E3C /* RestaurantInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfo.swift; sourceTree = "<group>"; };
 		44F3CA292C163BA3002C8BDD /* GPSLocation_Assignment8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPSLocation_Assignment8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F3CA2C2C163BA3002C8BDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44F3CA2E2C163BA3002C8BDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		44F3CA302C163BA3002C8BDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		44F3CA332C163BA3002C8BDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44F3CA362C163BA3002C8BDD /* GPSLocation_Assignment8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GPSLocation_Assignment8.xcdatamodel; sourceTree = "<group>"; };
 		44F3CA382C163BA6002C8BDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,11 +75,12 @@
 				44F3CA382C163BA6002C8BDD /* Assets.xcassets */,
 				44F3CA3A2C163BA6002C8BDD /* LaunchScreen.storyboard */,
 				44F3CA3D2C163BA6002C8BDD /* Info.plist */,
-				44F3CA302C163BA3002C8BDD /* ViewController.swift */,
 				44F3CA452C167CE1002C8BDD /* FAFileManager.swift */,
 				44F3CA472C167D5C002C8BDD /* FALocationManager.swift */,
 				44F3CA492C167D95002C8BDD /* NetworkManager.swift */,
 				44F3CA4D2C18206F002C8BDD /* BusinessCacheManager.swift */,
+				44C42F292C18337400754E3C /* RestaurantMapViewController.swift */,
+				44C42F2B2C18954900754E3C /* RestaurantInfo.swift */,
 			);
 			path = GPSLocation_Assignment8;
 			sourceTree = "<group>";
@@ -153,9 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C42F2C2C18954900754E3C /* RestaurantInfo.swift in Sources */,
 				44F3CA4E2C18206F002C8BDD /* BusinessCacheManager.swift in Sources */,
-				44F3CA312C163BA3002C8BDD /* ViewController.swift in Sources */,
 				44F3CA482C167D5C002C8BDD /* FALocationManager.swift in Sources */,
+				44C42F2A2C18337400754E3C /* RestaurantMapViewController.swift in Sources */,
 				44F3CA2D2C163BA3002C8BDD /* AppDelegate.swift in Sources */,
 				44F3CA4A2C167D95002C8BDD /* NetworkManager.swift in Sources */,
 				44F3CA2F2C163BA3002C8BDD /* SceneDelegate.swift in Sources */,
@@ -320,6 +324,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,6 +353,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -21,11 +21,11 @@
 			</array>
 		</dict>
 	</dict>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>We need your location to show nearby restaurants.</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>We need your location to show nearby restaurants, even when the app is in the background.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>We need your location to show nearby restaurants, even when the app is not in use.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Location needed to show nearby restaurants.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Location needed to show nearby restaurants, even when the app is in the background.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Location needed to show nearby restaurants, even when the app is not in use.</string>
 </dict>
 </plist>

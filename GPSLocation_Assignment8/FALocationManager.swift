@@ -5,6 +5,13 @@
 //  Created by KKNANXX on 6/9/24.
 //
 
+//
+//  FALocationManager.swift
+//  FirstApp
+//
+//  Created by Arpit on 03/06/24.
+//
+
 import Foundation
 import CoreLocation
 
@@ -30,14 +37,18 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
         locationManager.delegate = self
         
         locationManager.activityType = CLActivityType.otherNavigation
-        locationManager.distanceFilter = 1000.0
+        locationManager.distanceFilter = 5.0
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.allowsBackgroundLocationUpdates = true
         
-        if CLLocationManager.locationServicesEnabled() {
-            requestLocationAuthorization()
+        
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                self.requestLocationAuthorization()
+            }
         }
+        
     }
     
     
@@ -45,9 +56,32 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
         let status = locationManager.authorizationStatus
         
         if status == .notDetermined {
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         }
         
-        
     }
+    
+    func startTracking() {
+        locationManager.startUpdatingLocation()
+    }
+    
+    func stopTracking() {
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        print(manager.authorizationStatus.rawValue)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        userLocation = locations[0]
+        print(locations[0].coordinate.latitude)
+        print(locations[0].coordinate.longitude)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("failed")
+    }
+    
+    
 }
