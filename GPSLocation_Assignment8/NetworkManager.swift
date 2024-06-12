@@ -14,11 +14,12 @@ class NetworkManager: NSObject {
         let instance = NetworkManager()
         return instance
     }()
-    //static let shared: NetworkManager = NetworkManager()
     
     private override init() {
         super.init()
     }
+    
+    var apiKey: String = "cf4863382emsh660b0a010bd400dp1de074jsn26d3499ba6e2"
     
     enum HTTPMethod: String {
         case GET
@@ -49,6 +50,9 @@ class NetworkManager: NSObject {
             request.httpBody = body
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
+        
+        request.setValue("wyre-data.p.rapidapi.com", forHTTPHeaderField: "x-rapidapi-host")
+        request.setValue(apiKey, forHTTPHeaderField: "x-rapidapi-key")
         
         // Base authentication
         /*

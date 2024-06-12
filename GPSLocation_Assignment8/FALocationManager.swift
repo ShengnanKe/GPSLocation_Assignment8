@@ -70,17 +70,18 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print(manager.authorizationStatus.rawValue)
+        print(manager.authorizationStatus.rawValue) // 4
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         userLocation = location
         
-        // Convert location to city
+        print("Current coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+           
+        // location to city
         GeocodingService.shared.getCityFromCoordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { city in
             if let city = city {
-                // Notify about the city update (e.g., using NotificationCenter or a delegate)
                 NotificationCenter.default.post(name: NSNotification.Name("CityUpdated"), object: nil, userInfo: ["city": city])
             }
         }

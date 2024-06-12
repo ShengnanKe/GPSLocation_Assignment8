@@ -33,7 +33,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="showListButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9t-gn-jBN"/>
-                                    <segue destination="rBg-rq-SRP" kind="show" id="TcN-Ug-nqK"/>
+                                    <segue destination="rBg-rq-SRP" kind="show" identifier="showRestaurantList" id="7wc-ph-lsQ"/>
                                 </connections>
                             </button>
                         </subviews>
