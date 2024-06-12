@@ -8,7 +8,8 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, FALocationManagerDelegate {
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var showListButton: UIButton!
     
@@ -19,8 +20,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         let locationManager = FALocationManager.sharedInstance
+        locationManager.delegate = self
         locationManager.setupLocation()
         locationManager.startTracking()
+    }
+    
+    func didUpdateLocation(_ location: CLLocation) {
+        print("Current coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+        
+        GeocodingService.shared.getCityFromCoordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { [weak self] city in
+            if let city = city {
+                print("The city is: \(city)")
+                self?.fetchRestaurants(forCity: city)
+            } else {
+                print("Failed to retrieve city for coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+            }
+        }
+    }
+    
+    func didFailWithError(_ error: any Error) {
+        print("Failed to get location: \(error.localizedDescription)")
     }
     
     func fetchRestaurants(forCity city: String) {

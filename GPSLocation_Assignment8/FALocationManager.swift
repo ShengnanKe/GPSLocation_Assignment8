@@ -15,11 +15,18 @@
 import Foundation
 import CoreLocation
 
+protocol FALocationManagerDelegate: AnyObject {
+    func didUpdateLocation(_ location: CLLocation)
+    func didFailWithError(_ error: Error)
+}
+
 class FALocationManager: NSObject, CLLocationManagerDelegate
 {
     // MARK:- Variable
     var locationManager: CLLocationManager!
     var userLocation: CLLocation?
+    
+    weak var delegate: FALocationManagerDelegate?
     
     static let sharedInstance: FALocationManager = {
         let instance = FALocationManager()
@@ -76,18 +83,11 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         userLocation = location
-        
-        print("Current coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-        // 108 Bunbury Rd, Birmingham B31 2DN, United Kingdom
-           
-        // location to city
-        GeocodingService.shared.getCityFromCoordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { city in
-
-        }
+        delegate?.didUpdateLocation(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("failed")
+        delegate?.didFailWithError(error)
     }
     
     
