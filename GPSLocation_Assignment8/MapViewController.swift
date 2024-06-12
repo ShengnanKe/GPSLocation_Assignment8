@@ -76,14 +76,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, FALocationManagerD
     }
     
     @IBAction func showListButtonTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "showRestaurantList", sender: self)
+        performSegue(withIdentifier: "showRestaurantList", sender: nil)
     }
     
-    @IBAction func dropPin(sender: UIButton) {
-        let locationManager = FALocationManager.sharedInstance
-        let coordinate = locationManager.userLocation?.coordinate
-        setupPin(location: coordinate!)
-    }
+//    @IBAction func dropPin(sender: UIButton) {
+//        let locationManager = FALocationManager.sharedInstance
+//        let coordinate = locationManager.userLocation?.coordinate
+//        setupPin(location: coordinate!)
+//    }
     
     func setupPin(location: CLLocationCoordinate2D) {
         let pin = MKPlacemark(coordinate: location)
@@ -95,7 +95,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, FALocationManagerD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRestaurantList" {
             if let destinationVC = segue.destination as? RestaurantViewController {
-                destinationVC.restaurants = restaurants
+                destinationVC.restaurants = self.restaurants
             }
         }
     }
