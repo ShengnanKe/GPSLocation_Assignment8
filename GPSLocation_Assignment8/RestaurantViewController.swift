@@ -8,6 +8,7 @@
 import UIKit
 
 class RestaurantViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
     
     var restaurants: [RestaurantInfo] = []
