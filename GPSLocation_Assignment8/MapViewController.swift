@@ -18,22 +18,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleCityUpdated(notification:)), name: NSNotification.Name("CityUpdated"), object: nil)
-        
         let locationManager = FALocationManager.sharedInstance
         locationManager.setupLocation()
         locationManager.startTracking()
-    }
-    
-    @objc func handleCityUpdated(notification: Notification) {
-        if let city = notification.userInfo?["city"] as? String {
-            let locationManager = FALocationManager.sharedInstance
-            if let coordinate = locationManager.userLocation?.coordinate {
-                // Print the current coordinates
-                print("Current coordinates: \(coordinate.latitude), \(coordinate.longitude)")
-            }
-            fetchRestaurants(forCity: city)
-        }
     }
     
     func fetchRestaurants(forCity city: String) {
@@ -75,12 +62,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func dropPin(sender: UIButton) {
         let locationManager = FALocationManager.sharedInstance
-        if let coordinate = locationManager.userLocation?.coordinate {
-            // Print the current coordinates
-            print("Current coordinates: \(coordinate.latitude), \(coordinate.longitude)")
-            
-            setupPin(location: coordinate)
-        }
+        let coordinate = locationManager.userLocation?.coordinate
+        setupPin(location: coordinate!)
     }
     
     func setupPin(location: CLLocationCoordinate2D) {

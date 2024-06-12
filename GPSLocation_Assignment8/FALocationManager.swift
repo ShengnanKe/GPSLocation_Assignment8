@@ -78,12 +78,11 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
         userLocation = location
         
         print("Current coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+        // 108 Bunbury Rd, Birmingham B31 2DN, United Kingdom
            
         // location to city
         GeocodingService.shared.getCityFromCoordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { city in
-            if let city = city {
-                NotificationCenter.default.post(name: NSNotification.Name("CityUpdated"), object: nil, userInfo: ["city": city])
-            }
+
         }
     }
     
