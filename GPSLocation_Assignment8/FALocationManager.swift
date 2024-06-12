@@ -74,9 +74,16 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        userLocation = locations[0]
-        print(locations[0].coordinate.latitude)
-        print(locations[0].coordinate.longitude)
+        guard let location = locations.last else { return }
+        userLocation = location
+        
+        // Convert location to city
+        GeocodingService.shared.getCityFromCoordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) { city in
+            if let city = city {
+                // Notify about the city update (e.g., using NotificationCenter or a delegate)
+                NotificationCenter.default.post(name: NSNotification.Name("CityUpdated"), object: nil, userInfo: ["city": city])
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

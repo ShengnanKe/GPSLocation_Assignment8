@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Restaurant Map View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RestaurantMapViewController" customModule="GPSLocation_Assignment8" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="GPSLocation_Assignment8" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,6 +22,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbw-72-xb0">
+                                <rect key="frame" x="274" y="762" width="52" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="List">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" red="0.63248089659999995" green="0.3551196754" blue="0.59607731190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showListButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o9t-gn-jBN"/>
+                                    <segue destination="rBg-rq-SRP" kind="show" id="TcN-Ug-nqK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -31,10 +46,55 @@
                             <constraint firstItem="TM1-MK-VwP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tHf-9X-zjD"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="TM1-MK-VwP" id="Ni8-67-FWP"/>
+                        <outlet property="showListButton" destination="Vbw-72-xb0" id="BAA-ha-ii5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="135.1145038167939" y="4.9295774647887329"/>
+            <point key="canvasLocation" x="-560" y="59"/>
+        </scene>
+        <!--Restaurant View Controller-->
+        <scene sceneID="Evt-by-4Do">
+            <objects>
+                <viewController id="rBg-rq-SRP" customClass="RestaurantViewController" customModule="GPSLocation_Assignment8" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gdx-DM-J51">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Y82-vu-j2C">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantCell" id="7Bf-ZL-bgQ">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Bf-ZL-bgQ" id="WqT-h8-OCO">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="w2b-TM-I9E"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="w2b-TM-I9E" firstAttribute="trailing" secondItem="Y82-vu-j2C" secondAttribute="trailing" id="0WT-t7-4Rj"/>
+                            <constraint firstItem="Y82-vu-j2C" firstAttribute="leading" secondItem="w2b-TM-I9E" secondAttribute="leading" id="Gnh-OO-VFn"/>
+                            <constraint firstItem="Y82-vu-j2C" firstAttribute="top" secondItem="w2b-TM-I9E" secondAttribute="top" id="IPX-zi-e4Y"/>
+                            <constraint firstItem="w2b-TM-I9E" firstAttribute="bottom" secondItem="Y82-vu-j2C" secondAttribute="bottom" id="J0R-cz-KcZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bPQ-GW-CYx"/>
+                    <connections>
+                        <outlet property="tableView" destination="Y82-vu-j2C" id="vEr-ck-lcY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lUF-Q7-shU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="387" y="58"/>
         </scene>
     </scenes>
     <resources>

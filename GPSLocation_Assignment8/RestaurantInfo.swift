@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Restaurant: Decodable {
+struct RestaurantInfo: Decodable {
     let name: String?
     let latitude: Double?
     let longitude: Double?
