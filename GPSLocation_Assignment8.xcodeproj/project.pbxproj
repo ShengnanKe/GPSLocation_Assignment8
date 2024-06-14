@@ -120,8 +120,8 @@
 				44C42F412C1ABD9F00754E3C /* Manager */,
 				44F3CA3D2C163BA6002C8BDD /* Info.plist */,
 				44C42F3C2C1AB8AA00754E3C /* Model */,
-				44C42F3B2C1AB8A300754E3C /* View */,
 				44C42F3A2C1AB89800754E3C /* ViewModel */,
+				44C42F3B2C1AB8A300754E3C /* View */,
 			);
 			path = GPSLocation_Assignment8;
 			sourceTree = "<group>";
