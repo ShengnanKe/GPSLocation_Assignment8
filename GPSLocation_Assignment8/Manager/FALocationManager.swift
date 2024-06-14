@@ -8,23 +8,19 @@
 import Foundation
 import CoreLocation
 
-//protocol FALocationManagerDelegate: AnyObject {
-//    func didUpdateLocation(_ location: CLLocation)
-//    func didFailWithError(_ error: Error)
-//}
-
-class FALocationManager: NSObject, CLLocationManagerDelegate
-{
+class FALocationManager: NSObject, CLLocationManagerDelegate {
+    // MARK:- Variable
     var locationManager: CLLocationManager!
     var userLocation: CLLocation?
-    
-//    weak var delegate: FALocationManagerDelegate?
     
     static let sharedInstance: FALocationManager = {
         let instance = FALocationManager()
         return instance
     }()
     
+    var onLocationUpdate: ((CLLocation) -> Void)?
+    var onLocationError: ((Error) -> Void)?
+
     private override init() {
         super.init()
     }
@@ -34,18 +30,16 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
         locationManager.delegate = self
         
         locationManager.activityType = CLActivityType.otherNavigation
-        locationManager.distanceFilter = 100.0
+        locationManager.distanceFilter = 5.0
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.allowsBackgroundLocationUpdates = true
-        
         
         DispatchQueue.global().async {
             if CLLocationManager.locationServicesEnabled() {
                 self.requestLocationAuthorization()
             }
         }
-        
     }
     
     func requestLocationAuthorization() {
@@ -54,7 +48,6 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
         if status == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
-        
     }
     
     func startTracking() {
@@ -66,18 +59,16 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print(manager.authorizationStatus.rawValue) // 4
+        print(manager.authorizationStatus.rawValue)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         userLocation = location
-        delegate?.didUpdateLocation(location)
+        onLocationUpdate?(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        delegate?.didFailWithError(error)
+        onLocationError?(error)
     }
-    
-    
 }

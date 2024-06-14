@@ -16,6 +16,8 @@ class MapViewModel {
         }
     }
     var onUpdate: (() -> Void)?
+    var onLocationUpdate: ((CLLocation) -> Void)?
+    var onLocationError: ((Error) -> Void)?
     
     func fetchRestaurants(forCity city: String) {
         RestaurantService.shared.fetchRestaurants(forCity: city) { [weak self] restaurants in
@@ -29,5 +31,17 @@ class MapViewModel {
     
     func fetchCityFromCoordinates(location: CLLocation, completion: @escaping (String?) -> Void) {
         GeocodingService.shared.getCityFromCoordinates(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, completion: completion)
+    }
+    
+    func startLocationUpdates() {
+        let locationManager = FALocationManager.sharedInstance
+        locationManager.onLocationUpdate = { [weak self] location in
+            self?.onLocationUpdate?(location)
+        }
+        locationManager.onLocationError = { [weak self] error in
+            self?.onLocationError?(error)
+        }
+        locationManager.setupLocation()
+        locationManager.startTracking()
     }
 }

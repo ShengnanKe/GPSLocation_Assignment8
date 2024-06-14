@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {  //} FALocationManagerDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var showListButton: UIButton!
@@ -19,20 +19,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {  //} FALocationMa
         super.viewDidLoad()
         mapView.delegate = self
         
-        // Bind the view model updates to the updateMap method
         viewModel.onUpdate = { [weak self] in
             DispatchQueue.main.async {
                 self?.updateMap()
             }
         }
         
-        let locationManager = FALocationManager.sharedInstance
-        //locationManager.delegate = self
-        locationManager.setupLocation()
-        locationManager.startTracking()
+        viewModel.onLocationUpdate = { [weak self] location in
+            self?.handleLocationUpdate(location)
+        }
+        
+        viewModel.onLocationError = { [weak self] error in
+            self?.handleLocationError(error)
+        }
+        
+        viewModel.startLocationUpdates()
     }
     
-    func didUpdateLocation(_ location: CLLocation) {
+    func handleLocationUpdate(_ location: CLLocation) {
         print("Current coordinates: \(location.coordinate.latitude), \(location.coordinate.longitude)")
         
         viewModel.fetchCityFromCoordinates(location: location) { [weak self] city in
@@ -45,7 +49,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {  //} FALocationMa
         }
     }
     
-    func didFailWithError(_ error: Error) {
+    func handleLocationError(_ error: Error) {
         print("Failed to get location: \(error.localizedDescription)")
     }
     
