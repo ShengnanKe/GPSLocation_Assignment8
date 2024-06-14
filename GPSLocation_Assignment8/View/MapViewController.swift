@@ -14,7 +14,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var showListButton: UIButton!
     
     private var viewModel = MapViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -26,6 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         viewModel.onLocationUpdate = { [weak self] location in
+            self?.centerMapOnLocation(location)
             self?.handleLocationUpdate(location)
         }
         
@@ -63,6 +64,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 mapView.addAnnotation(annotation)
             }
         }
+    }
+    
+    func centerMapOnLocation(_ location: CLLocation) {
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
     @IBAction func showListButtonTapped(_ sender: UIButton) {

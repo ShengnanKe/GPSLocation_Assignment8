@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 class FALocationManager: NSObject, CLLocationManagerDelegate {
-    // MARK:- Variable
+
     var locationManager: CLLocationManager!
     var userLocation: CLLocation?
     
