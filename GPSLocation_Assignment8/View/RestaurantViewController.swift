@@ -11,22 +11,27 @@ class RestaurantViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
-    var restaurants: [RestaurantInfo] = []
+    var viewModel: RestaurantViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RestaurantCell")
+        
+        viewModel.onUpdate = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count
+        return viewModel.restaurants.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath)
-        let restaurant = restaurants[indexPath.row]
+        let restaurant = viewModel.restaurants[indexPath.row]
         cell.textLabel?.text = restaurant.name
         return cell
     }

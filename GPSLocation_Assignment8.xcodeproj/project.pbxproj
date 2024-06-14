@@ -12,6 +12,8 @@
 		44C42F302C19061600754E3C /* RestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C42F2F2C19061600754E3C /* RestaurantService.swift */; };
 		44C42F322C197A1E00754E3C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C42F312C197A1E00754E3C /* MapViewController.swift */; };
 		44C42F342C19813000754E3C /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C42F332C19813000754E3C /* RestaurantViewController.swift */; };
+		44C42F3E2C1ABC4000754E3C /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C42F3D2C1ABC4000754E3C /* MapViewModel.swift */; };
+		44C42F402C1ABC5000754E3C /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C42F3F2C1ABC5000754E3C /* RestaurantViewModel.swift */; };
 		44F3CA2D2C163BA3002C8BDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3CA2C2C163BA3002C8BDD /* AppDelegate.swift */; };
 		44F3CA2F2C163BA3002C8BDD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3CA2E2C163BA3002C8BDD /* SceneDelegate.swift */; };
 		44F3CA342C163BA3002C8BDD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 44F3CA332C163BA3002C8BDD /* Base */; };
@@ -28,6 +30,8 @@
 		44C42F2F2C19061600754E3C /* RestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantService.swift; sourceTree = "<group>"; };
 		44C42F312C197A1E00754E3C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		44C42F332C19813000754E3C /* RestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		44C42F3D2C1ABC4000754E3C /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		44C42F3F2C1ABC5000754E3C /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
 		44F3CA292C163BA3002C8BDD /* GPSLocation_Assignment8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPSLocation_Assignment8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F3CA2C2C163BA3002C8BDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44F3CA2E2C163BA3002C8BDD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44C42F3A2C1AB89800754E3C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44C42F3D2C1ABC4000754E3C /* MapViewModel.swift */,
+				44C42F3F2C1ABC5000754E3C /* RestaurantViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		44C42F3B2C1AB8A300754E3C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44C42F312C197A1E00754E3C /* MapViewController.swift */,
+				44C42F332C19813000754E3C /* RestaurantViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44C42F3C2C1AB8AA00754E3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				44C42F2D2C19053B00754E3C /* GeocodingService.swift */,
+				44C42F2F2C19061600754E3C /* RestaurantService.swift */,
+				44C42F2B2C18954900754E3C /* RestaurantInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		44C42F412C1ABD9F00754E3C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				44F3CA472C167D5C002C8BDD /* FALocationManager.swift */,
+				44F3CA492C167D95002C8BDD /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		44F3CA202C163BA3002C8BDD = {
 			isa = PBXGroup;
 			children = (
@@ -77,13 +118,10 @@
 				44F3CA382C163BA6002C8BDD /* Assets.xcassets */,
 				44F3CA3A2C163BA6002C8BDD /* LaunchScreen.storyboard */,
 				44F3CA3D2C163BA6002C8BDD /* Info.plist */,
-				44F3CA472C167D5C002C8BDD /* FALocationManager.swift */,
-				44C42F2D2C19053B00754E3C /* GeocodingService.swift */,
-				44F3CA492C167D95002C8BDD /* NetworkManager.swift */,
-				44C42F2B2C18954900754E3C /* RestaurantInfo.swift */,
-				44C42F2F2C19061600754E3C /* RestaurantService.swift */,
-				44C42F312C197A1E00754E3C /* MapViewController.swift */,
-				44C42F332C19813000754E3C /* RestaurantViewController.swift */,
+				44C42F412C1ABD9F00754E3C /* Manager */,
+				44C42F3C2C1AB8AA00754E3C /* Model */,
+				44C42F3B2C1AB8A300754E3C /* View */,
+				44C42F3A2C1AB89800754E3C /* ViewModel */,
 			);
 			path = GPSLocation_Assignment8;
 			sourceTree = "<group>";
@@ -160,11 +198,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				44C42F302C19061600754E3C /* RestaurantService.swift in Sources */,
+				44C42F402C1ABC5000754E3C /* RestaurantViewModel.swift in Sources */,
 				44C42F342C19813000754E3C /* RestaurantViewController.swift in Sources */,
 				44C42F2C2C18954900754E3C /* RestaurantInfo.swift in Sources */,
 				44C42F2E2C19053B00754E3C /* GeocodingService.swift in Sources */,
 				44F3CA482C167D5C002C8BDD /* FALocationManager.swift in Sources */,
 				44F3CA2D2C163BA3002C8BDD /* AppDelegate.swift in Sources */,
+				44C42F3E2C1ABC4000754E3C /* MapViewModel.swift in Sources */,
 				44C42F322C197A1E00754E3C /* MapViewController.swift in Sources */,
 				44F3CA4A2C167D95002C8BDD /* NetworkManager.swift in Sources */,
 				44F3CA2F2C163BA3002C8BDD /* SceneDelegate.swift in Sources */,

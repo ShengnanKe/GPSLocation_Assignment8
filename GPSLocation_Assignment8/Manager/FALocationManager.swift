@@ -5,28 +5,20 @@
 //  Created by KKNANXX on 6/9/24.
 //
 
-//
-//  FALocationManager.swift
-//  FirstApp
-//
-//  Created by Arpit on 03/06/24.
-//
-
 import Foundation
 import CoreLocation
 
-protocol FALocationManagerDelegate: AnyObject {
-    func didUpdateLocation(_ location: CLLocation)
-    func didFailWithError(_ error: Error)
-}
+//protocol FALocationManagerDelegate: AnyObject {
+//    func didUpdateLocation(_ location: CLLocation)
+//    func didFailWithError(_ error: Error)
+//}
 
 class FALocationManager: NSObject, CLLocationManagerDelegate
 {
-    // MARK:- Variable
     var locationManager: CLLocationManager!
     var userLocation: CLLocation?
     
-    weak var delegate: FALocationManagerDelegate?
+//    weak var delegate: FALocationManagerDelegate?
     
     static let sharedInstance: FALocationManager = {
         let instance = FALocationManager()
@@ -37,14 +29,12 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
         super.init()
     }
     
-    // Important
-    
     func setupLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
         locationManager.activityType = CLActivityType.otherNavigation
-        locationManager.distanceFilter = 5.0
+        locationManager.distanceFilter = 100.0
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.allowsBackgroundLocationUpdates = true
@@ -57,7 +47,6 @@ class FALocationManager: NSObject, CLLocationManagerDelegate
         }
         
     }
-    
     
     func requestLocationAuthorization() {
         let status = locationManager.authorizationStatus

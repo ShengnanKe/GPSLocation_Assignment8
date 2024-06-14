@@ -19,8 +19,6 @@ class NetworkManager: NSObject {
         super.init()
     }
     
-    var apiKey: String = "cf4863382emsh660b0a010bd400dp1de074jsn26d3499ba6e2"
-    
     enum HTTPMethod: String {
         case GET
         case POST
@@ -32,6 +30,8 @@ class NetworkManager: NSObject {
         case invalidURL
         case noData
     }
+    
+    var apiKey: String = "cf4863382emsh660b0a010bd400dp1de074jsn26d3499ba6e2"
     
     func request(urlString: String, method: HTTPMethod, body: Data?, completion: @escaping (Result<Data, Error>) -> Void) {
         
